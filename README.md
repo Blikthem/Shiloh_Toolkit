@@ -11,4 +11,4 @@ The algorithm which generates the longest transcript annotation file from a gtf 
 4.	Intron rows are generated between exons within each transcript.
 5.	Export to CSV.
 
-## 2. 5' UTR / CDS / 3' UTR Metagene
+## 5' UTR / CDS / 3' UTR Metagene
