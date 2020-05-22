@@ -1,6 +1,77 @@
 # clip-metagene
 Suite of tools that use cluster files to visualize the binding of CLIP data across genomic features of a specified species.
 
+Perform a metagene analysis on binding cluster files.
+
+positional arguments:
+  clusterInput          The input cluster file(s). Either a .csv file or a
+                        directory (in this case the analysis will be run on
+                        all csv files in that directory).
+  outputDirectory       The directory in which all output files will be
+                        generated.
+  anotation             The annotation file matching that used in cluster
+                        formation. This program runs on intermediate files
+                        (hg38 and mm10 included in download) generated from a
+                        gtf file deposited in the source directory. Pass that
+                        intermediate file or a gtf file. If a gtf file is
+                        given, the program will automatically generate the
+                        intermediate file from that gtf file, place it in the
+                        source directory, and then run the program (Note: This
+                        is quite slow so don't pass a gtf if you already have
+                        the intermediate file).
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -gtu genesToUse       A list of genes ex [gene1,gene2,gene3], the program
+                        will then ONLY consider overlap with those genes in
+                        all analysis. Default=Analyze all genes
+  -bf boundFilter       The name of the continuous variable to use when
+                        filtering clusters. Must be 'start', 'end', 'CS',
+                        'URC', or 'RC'. Default=ReadCount.
+  -lb lowerBound        The lower bound for the filtering step - the
+                        percentage of clusters with the lowest values of the
+                        boundFilter variable to remove. Default=0
+  -ub upperBound        The upper bound for the filtering step - the
+                        percentage of clusters with the highest values of the
+                        boundFilter variable to remove. Default=0
+  -thresh clusterThreshold
+                        The minimum number of clusters that must be aligned to
+                        a gene in order for it to be considered in the
+                        analysis. Default=1
+  -rs randomStates      A list of integers to use as the random seeds during
+                        bin analysis. Increasing this list size will increase
+                        the number of times the binning step is done before
+                        the results are averaged. Default=[7211995,541995,3131
+                        994,111,222,333,444,555,888,999]
+  -dpi dpi              Dots per inch (image resolution) of all graphics
+                        created. Default=250
+  -at analysisType      Whether to only run one of the metagene analysis
+                        programs. Enter IE to run only the intron/exon program
+                        or FCDST to only run the 5 prime / CDS /3 prime
+                        analyais. Default=Run both
+  -wtexp wildTypeExpressionFile
+                        A file containing gene expression levels for the wild
+                        type cell line. If included, the program will
+                        normalize gene expression levels to the rounded
+                        average wild type gene expression.
+  -bedGTF bedAnnotation
+                        The GTF to be used to annotate bed files without Gene
+                        fields. Note: A time-consuming indexing step occurs
+                        the first time a new GTF is used. Default=Gencode
+                        hg38.
+  --png PNG             Save images as PNG's instead of PDF's.
+  --wbrc WBRC           Weight the impact of every normalized gene cluster
+                        distribution on the overall metagene by the number of
+                        reads aligning to that gene.
+  --unusualChromosomes UNUSUALCHROMOSOMES
+                        Consider clusters that align to chromosomes other than
+                        the 'main' autosomal and sex chromosomes.
+  --exonCentered EXONCENTERED
+                        Whether to also run an exon-centric version of the
+                        intron/exon heat mapper. This feature is not as
+                        rigorously tested and also takes a lot of time and
+                        resources.
+
 ## Longest Transcript Annotation File
 The metagene programs do not directly use standard (GTF, RefFlat, etc.) annotation files but CSV files containing information about only the longest transcript (the transcript with the most exonic nucleotides) splice variant of each gene in an annotation. Included in this repository are such CSV files generated from the Gencode human ([gencode.v30.annotation.gtf](https://www.gencodegenes.org/human/release_30.html)) and mouse ([gencode.vM23.annotation.gtf](https://www.gencodegenes.org/mouse/release_M23.html)) chromosome assemblies. If users wish to run a metagene analysis using a different annotation source (likely whichever was used in generating their cluster files), they can provide a gtf file as the annotation input and the program will automatically generate the intermediate csv annotation file from the provided gtf file, save it to the output directory, and use it to run the metagene analyses. *Note: This step is very slow and thus a gtf file should only be used as an input when a CSV annotation file has not yet been generated.*
 ### Algorithm
