@@ -113,3 +113,5 @@ i.	The average distribution of binding sites from the PAR-CLIP across the intron
 a.	Compress all of the individual distribution plots into a single row of the heat map. Blue color indicates little cluster density in a bin while red color indicates greater cluster density.
 b.	Employ agglomerative hierarchical clustering to group the rows of the heatmap.
 
+## Optional new window
+Users have the option to calculate binding distributions around exons and a portion of flanking introns instead of around intron and flanking half exon pairs. This feature, which is rather slow and less rigorously debugged, relies on most of the same calculations as the traditional window mentioned above but does not preserve percent density at 100% as not all of the intronic region is shown.
