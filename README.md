@@ -1,14 +1,15 @@
 # clip-metagene
 Suite of tools that use cluster files to visualize the binding of CLIP data across genomic features of a specified species.
 
-Perform a metagene analysis on binding cluster files.
-
-positional arguments:
-  clusterInput          The input cluster file(s). Either a .csv file or a
+##positional arguments:
+###Cluster input
+        The input cluster file(s). Either a .csv file or a
                         directory (in this case the analysis will be run on
                         all csv files in that directory).
+                        
   outputDirectory       The directory in which all output files will be
                         generated.
+                        
   anotation             The annotation file matching that used in cluster
                         formation. This program runs on intermediate files
                         (hg38 and mm10 included in download) generated from a
