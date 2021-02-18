@@ -23,7 +23,7 @@ i.	The data in the row is saved to an anotRow object.
 ii.	The row object is added to the anotFile object.
 
 2.	The annotation information is sorted by gene.
-- The rows from the intermediate annotation file are sorted into anotGene objects, which contain all the annotation information from the GTF for a given gene.
+ The rows from the intermediate annotation file are sorted into anotGene objects, which contain all the annotation information from the GTF for a given gene.
 
 3.	The cluster files are read into the program.
 a.	For each .csv file in the input directory…
