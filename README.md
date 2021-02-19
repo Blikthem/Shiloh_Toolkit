@@ -16,7 +16,6 @@ The algorithm which generates the longest transcript annotation file from a gtf 
 
 ## 5' UTR / CDS / 3' UTR Metagene
 ### Algorithm
-![alt text](file:///C:/Users/dunca/Desktop/MethodsPaper/Supplimental_CDS_Algorithm.pdf)
 1.	The annotation csv file is read into the program.
 a.	An anotFile object is instantiated to store annotation information.
 b.	The program scans each row of the intermediate annotation csv file.
