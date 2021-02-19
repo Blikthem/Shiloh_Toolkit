@@ -16,6 +16,7 @@ The algorithm which generates the longest transcript annotation file from a gtf 
 
 ## 5' UTR / CDS / 3' UTR Metagene
 ### Algorithm
+(Please see algorithm diagram file)
 1.	The annotation csv file is read into the program.
 a.	An anotFile object is instantiated to store annotation information.
 b.	The program scans each row of the intermediate annotation csv file.
@@ -62,7 +63,7 @@ b.	Employ agglomerative hierarchical clustering to group the rows of the heatmap
 
 ## Intron / Exon UTR Metagene
 ### Algorithm
-
+(Please see algorithm diagram file)
 1.	The annotation csv file is read into the program.
 a.	An anotFile object is instantiated to store annotation information.
 b.	The program scans each row of the intermediate annotation csv file.
